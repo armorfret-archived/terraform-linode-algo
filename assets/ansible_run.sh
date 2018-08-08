@@ -21,4 +21,4 @@ ansible-playbook \
         OnDemandEnabled_WIFI=Y
         OnDemandEnabled_WIFI_EXCLUDE='_null'
         Store_CAKEY=N
-        p12_export_password="${password}"
+        p12_export_password='${password}'"
