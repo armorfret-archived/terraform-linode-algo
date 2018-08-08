@@ -22,8 +22,7 @@ resource "linode_instance" "algo" {
   }
 
   provisioner "local-exec" {
-    command = "${path.module}/assets/password_gen.sh ${linode_instance.algo.ip
-_address}"
+    command = "${path.module}/assets/password_gen.sh ${linode_instance.algo.ip_address}"
 
     working_dir = "${path.root}"
   }
