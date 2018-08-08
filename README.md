@@ -10,6 +10,7 @@ Terraform module that creates a [Linode](https://linode.com) with [Algo](https:/
 ```
 module "vpn" {
   source  = "github.com/akerl/terraform-linode-algo"
+  name = "vpn"
   ssh_key = "PUT_YOUR_PUBKEY_HERE"
 
   users = [
