@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+export DEBIAN_FRONTEND=noninteractive
+
 apt update -qq
 apt upgrade -y -qq
 apt install -y -qq ansible python-pip build-essential python-dev python-virtualenv
