@@ -3,9 +3,9 @@ variable "name" {
   description = "The human-readable name for the server. Used when naming the Linode (with a suffix of '-algo')"
 }
 
-variable "ssh_key" {
-  type        = "string"
-  description = "SSH public key used to log in as root to the server"
+variable "ssh_keys" {
+  type        = "list"
+  description = "SSH public keys used to log in as root to the server"
 }
 
 variable "region" {
