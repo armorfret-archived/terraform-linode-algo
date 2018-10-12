@@ -9,8 +9,6 @@ data "template_file" "config" {
 resource "linode_instance" "algo" {
   label = "${var.name}-algo"
 
-  image  = "linode/ubuntu18.04"
-  kernel = "linode/grub2"
   region = "${var.region}"
   type   = "${var.type}"
 
@@ -31,8 +29,6 @@ resource "linode_instance" "algo" {
       }
     }
   }
-
-  boot_config = "default"
 
   provisioner "remote-exec" {
     script = "${path.module}/assets/system_init.sh"
