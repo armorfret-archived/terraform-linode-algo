@@ -11,7 +11,7 @@ password="$(cat /dev/shm/algo_password)"
 shred /dev/shm/algo_password
 
 ansible-playbook \
-    deploy.yml \
+    main.yml \
     -t 'local,vpn' \
     --skip-tags '_null,encrypted,cloud,update-alternatives' \
     -e "server_ip=localhost
