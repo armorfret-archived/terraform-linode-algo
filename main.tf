@@ -14,7 +14,7 @@ resource "linode_instance" "algo" {
   region = "${var.region}"
   type   = "${var.type}"
 
-  ssh_key = "${var.ssh_key}"
+  authorized_keys = "${var.ssh_keys}"
 
   provisioner "remote-exec" {
     script = "${path.module}/assets/system_init.sh"
