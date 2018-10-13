@@ -12,6 +12,9 @@ shred -u /dev/shm/algo_password
 
 ansible-playbook main.yml -e "
     provider=local
+    server=localhost
+    endpoint='${ip_addr}'
+    wireguard_enabled=true
     ondemand_cellular=true
     ondemand_wifi=true
     ondemand_wifi_exclude=''
