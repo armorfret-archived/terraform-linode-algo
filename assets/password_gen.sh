@@ -10,11 +10,7 @@ mkdir -p -m 0700 "${config_dir}"
 touch "${password_file}"
 chmod 600 "${password_file}"
 
-openssl rand 24 | python2 -c "
-import sys,string
-chars=string.ascii_letters + string.digits + '_@'
-print ''.join([chars[ord(c) % 64] for c in list(sys.stdin.read())])" \
-> "${password_file}"
+shuf -n3 /usr/share/dict/words | tr '\n' '-' > "${password_file}"
 
 scp \
     -oStrictHostKeyChecking=no \
