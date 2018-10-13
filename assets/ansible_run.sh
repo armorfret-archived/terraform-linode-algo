@@ -10,8 +10,6 @@ ip_addr="$(ip -4 addr show eth0 | awk '/inet/ {print $2}' | sed 's|/[0-9]*$||')"
 password="$(cat /dev/shm/algo_password)"
 shred /dev/shm/algo_password
 
-        p12_export_password='${password}'"
-
 ansible-playbook main.yml -e "
     provider=local
     ondemand_cellular=true
