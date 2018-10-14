@@ -6,38 +6,22 @@ data "template_file" "config" {
   }
 }
 
-resource "linode_instance" "algo" {
-  label = "${var.name}-algo"
+module "vm" {
+  source = "github.com/akerl/terraform-linode-algo-base"
 
-  region = "${var.region}"
-  type   = "${var.type}"
+  name            = "${var.name}"
+  ssh_keys        = "${var.ssh_keys}"
+  region          = "${var.region}"
+  type            = "${var.type}"
+  algo_repo       = "${var.algo_repo}"
+  source_image_id = "${image_id}"
+}
 
-  disk {
-    label           = "root"
-    size            = 10240
-    authorized_keys = "${var.ssh_keys}"
-    image           = "linode/ubuntu18.04"
-  }
-
-  config {
-    label  = "default"
-    kernel = "linode/grub2"
-
-    devices {
-      sda = {
-        disk_label = "root"
-      }
-    }
-  }
-
-  provisioner "remote-exec" {
-    script = "${path.module}/assets/system_init.sh"
-  }
-
-  provisioner "local-exec" {
-    command = "${path.module}/assets/password_gen.sh ${linode_instance.algo.ip_address}"
-
-    working_dir = "${path.root}"
+resource "null_resource" "configuration" {
+  connection {
+    type = "ssh"
+    user = "root"
+    host = "${module.vm.ip_address}"
   }
 
   provisioner "file" {
@@ -46,12 +30,11 @@ resource "linode_instance" "algo" {
   }
 
   provisioner "remote-exec" {
-    script = "${path.module}/assets/ansible_run.sh"
+    script = "${path.module}/assets/deploy.sh"
   }
 
   provisioner "local-exec" {
-    command = "${path.module}/assets/download.sh ${linode_instance.algo.ip_address}"
-
+    command     = "${path.module}/assets/download.sh ${module.vm.ip_address}"
     working_dir = "${path.root}"
   }
 }

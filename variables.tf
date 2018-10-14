@@ -24,3 +24,15 @@ variable "users" {
   type        = "list"
   description = "List of user accounts to provision for VPN access"
 }
+
+variable "algo_repo" {
+  type        = "string"
+  default     = "https://github.com/akerl/algo"
+  description = "Repo to use for Algo code"
+}
+
+variable "image_id" {
+  type        = "string"
+  default     = "linode/ubuntu18.04"
+  description = "Source image to build on"
+}
