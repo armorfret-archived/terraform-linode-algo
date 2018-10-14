@@ -14,7 +14,7 @@ module "vm" {
   region          = "${var.region}"
   type            = "${var.type}"
   algo_repo       = "${var.algo_repo}"
-  source_image_id = "${image_id}"
+  source_image_id = "${var.image_id}"
 }
 
 resource "null_resource" "configuration" {
