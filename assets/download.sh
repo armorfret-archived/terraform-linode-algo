@@ -7,7 +7,7 @@ server_name="$2"
 src_path="/opt/algo/configs/${server_ip}/*.mobileconfig"
 target_dir="configs/${server_name}"
 
-mkdir -p "$config_dir"
+mkdir -p "$target_dir"
 scp \
     -oStrictHostKeyChecking=no \
     "root@${server_ip}:${src_path}" \
