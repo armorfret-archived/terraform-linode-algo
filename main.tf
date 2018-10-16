@@ -40,7 +40,7 @@ resource "null_resource" "configuration" {
   }
 
   provisioner "local-exec" {
-    command     = "${path.module}/assets/download.sh ${module.vm.ip_address}"
+    command     = "${path.module}/assets/download.sh '${module.vm.ip_address}' '${var.name}'"
     working_dir = "${path.root}"
   }
 }
