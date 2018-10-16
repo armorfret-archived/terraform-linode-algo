@@ -18,6 +18,12 @@ module "vm" {
 }
 
 resource "null_resource" "configuration" {
+  triggers = {
+    linode_id  = "${module.vm.linode_id}"
+    ip_address = "${module.vm.ip_address}"
+    content    = "${data.template_file.config.rendered}"
+  }
+
   connection {
     type = "ssh"
     user = "root"
