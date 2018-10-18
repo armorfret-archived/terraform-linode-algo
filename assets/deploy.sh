@@ -5,18 +5,4 @@ set -euo pipefail
 cd /opt/algo
 export PS1=""
 source env/bin/activate
-
-ip_addr="$(ip -4 addr show eth0 | awk '/inet/ {print $2}' | sed 's|/[0-9]*$||')"
-
-ansible-playbook main.yml -e "
-    provider=local
-    server=localhost
-    endpoint='${ip_addr}'
-    wireguard_enabled=true
-    ondemand_cellular=true
-    ondemand_wifi=true
-    ondemand_wifi_exclude=''
-    local_dns=false
-    ssh_tunneling=true
-    windows=false
-    store_cakey=false"
+ansible-playbook main.yml

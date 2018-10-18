@@ -2,7 +2,8 @@ data "template_file" "config" {
   template = "${file("${path.module}/assets/config.cfg")}"
 
   vars {
-    userlist = "${jsonencode(var.users)}"
+    userlist   = "${jsonencode(var.users)}"
+    ip_address = "${module.vm.ip_address}"
   }
 }
 
