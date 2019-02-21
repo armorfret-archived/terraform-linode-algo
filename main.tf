@@ -33,7 +33,7 @@ resource "null_resource" "configuration" {
 
   provisioner "file" {
     content     = "${data.template_file.config.rendered}"
-    destination = "/opt/config.cfg"
+    destination = "/opt/algo/config.cfg"
   }
 
   provisioner "remote-exec" {
