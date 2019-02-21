@@ -3,9 +3,8 @@
 set -euo pipefail
 
 ALGO_DIR=/opt/algo
-if [[ ! -e "$ALGO_DIR" ]] ; then
-    git clone "${algo_repo}" "$ALGO_DIR"
-fi
+[[ -e "$ALGO_DIR" ]] && rm -rf "$ALGO_DIR"
+git clone "${algo_repo}" "$ALGO_DIR"
 
 (
     cd "$ALGO_DIR"
@@ -17,8 +16,11 @@ fi
 
     git pull
 
+    mv /opt/config.cfg ./config.cfg
+
     [[ -e env ]] && rm -rf env
     virtualenv env
+
     export PS1=""
     source env/bin/activate
     pip install --force-reinstall --no-cache-dir -r requirements.txt
