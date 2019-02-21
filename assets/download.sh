@@ -5,7 +5,7 @@ set -euo pipefail
 server_ip="$1"
 server_name="$2"
 src_root_path="/opt/algo/configs/${server_ip}"
-src_objects="*.mobileconfig wireguard/*.png wireguard/*.conf"
+src_objects="wireguard/*.png wireguard/*.conf"
 target_dir="configs/${server_name}"
 
 mkdir -p "$target_dir"
