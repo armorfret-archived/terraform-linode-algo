@@ -5,6 +5,7 @@ set -euo pipefail
 ALGO_DIR=/opt/algo
 (
     cd "$ALGO_DIR"
+    git pull
 
     [[ -e env ]] && rm -rf env
     virtualenv env
