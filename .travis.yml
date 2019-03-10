@@ -1,0 +1,13 @@
+dist: trusty
+env:
+  global:
+  - TFBIN_DIR=$HOME/tfbin
+  - TERRAFORM_VERSION=0.11.12
+install:
+- "./scripts/download_terraform.sh $TERRAFORM_VERSION"
+script:
+- "~/tfbin/terraform fmt -write=false -diff=true -check"
+notifications:
+  email: false
+  slack:
+    secure: jKVcBYc8eqEJn5SNRuymbDA2INjH2RArH9NdkvT6X2v/rONfoLCbBwOFb8wZaXbWG1RxpMsJQhrzIC1VZMNqmSzq2yGcOw4MMRMcfOMQPxwyD6udNYFz9t2XgAkEA6WC507l2zt8vJZQtG5zU3gsdNuFGawi4Fb6ck6l3ks7yZtYnR8tl7thdJ0IzzVvz7QQynaRtBU9QpJ0+h+Y3hXPNCYC/vZRrZp/PbgxZPsU7caIZm4zAZLS2W08cOm9QXrcX73nwICZlxDm4tXiMhEkb809XKfhV512LplzQNhMtrNdXKshVkLPBCMhVuHx77mKvxaB5xsxDYK47Nob+kntgbUDgiinu7SeXMT+hkmaoLxLqOjxvW1ODaZR8KSA8CLuKGga2+rkWlPxfMkZQi0P6gH/QDUMTWkEftanM/R/FVhIGSsPEmKKADSByL//RjmDg8AnDmFv3lI0QMRU3ygd6wHiL1csaxXtbRm7FzQ27IvXO8uEvh4p42Zi4GWPOU6bbEZeob46RiNwb0RHaWVlSD0AcLqk/9qqK3hna8Df5wL6VEX9dNK0SZxXbTqoJRcGrqFVCMHDRGF4SwGPgJex4A9Jp2oyoGmT+h3FSwslOB/nUfOWNRb2hG7Lni+qDk3Q64lvwhYUBqqmBWmoLOMseor+uWoiHDccQc3teYxu0Yk=

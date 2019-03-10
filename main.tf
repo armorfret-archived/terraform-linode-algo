@@ -8,8 +8,8 @@ data "template_file" "config" {
 }
 
 module "vm" {
-  source = "github.com/akerl/terraform-linode-algo-base"
-
+  source          = "armorfret/algo-base/linode"
+  version         = "0.0.2"
   name            = "${var.name}"
   ssh_keys        = "${var.ssh_keys}"
   region          = "${var.region}"
