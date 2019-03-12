@@ -3,7 +3,7 @@ Prospectus.extra_dep('file', 'prospectus_travis')
 item do
   noop
 
-  extend ProspectusTravis::Build.new('akerl/terraform-linode-algo')
+  extend ProspectusTravis::Build.new('armorfret/terraform-linode-algo')
 
   deps do
     item do

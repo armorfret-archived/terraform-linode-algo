@@ -2,7 +2,7 @@ dist: trusty
 env:
   global:
   - TFBIN_DIR=$HOME/tfbin
-  - TERRAFORM_VERSION=0.11.12
+  - TERRAFORM_VERSION=0.11.13
 install:
 - "./scripts/download_terraform.sh $TERRAFORM_VERSION"
 script:
