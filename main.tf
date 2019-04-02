@@ -9,9 +9,10 @@ data "template_file" "config" {
 
 module "vm" {
   source          = "armorfret/algo-base/linode"
-  version         = "0.0.2"
+  version         = "0.0.3"
   name            = "${var.name}"
-  ssh_keys        = "${var.ssh_keys}"
+  ssh_keys        = ["${var.ssh_keys}"]
+  users           = ["${var.users}"]
   region          = "${var.region}"
   type            = "${var.type}"
   algo_repo       = "${var.algo_repo}"
