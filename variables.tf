@@ -9,7 +9,7 @@ variable "ssh_keys" {
   default     = []
 }
 
-variable "users" {
+variable "ssh_users" {
   type        = "list"
   description = "List of authorized users (Linode usernames, must have keys already assigned via Linode API)"
   default     = []
