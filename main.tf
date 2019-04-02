@@ -42,7 +42,13 @@ resource "null_resource" "configuration" {
   }
 
   provisioner "local-exec" {
-    command     = "${path.module}/assets/download.sh '${module.vm.ip_address}' '${var.name}'"
+    command     = "${path.module}/assets/download.sh"
     working_dir = "${path.root}"
+
+    environment = {
+      VPN_IP_ADDRESS = "${module.vm.ip_address}"
+      VPN_NAME       = "${var.name}"
+      VPN_REGION     = "${var.region}"
+    }
   }
 }
