@@ -1,3 +1,5 @@
+**Inactive Project:** I've switched from algo to a lighter weight [set of ansible playbooks](https://github.com/akerl/deploy-wireguard-server)
+
 terraform-linode-algo
 =========
 
